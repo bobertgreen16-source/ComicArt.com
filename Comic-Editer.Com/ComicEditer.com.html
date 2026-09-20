@@ -1,0 +1,90 @@
+<title>ComicEditer.com</title>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Comic Drawing Box</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; background: #f4f4f4; }
+    canvas { border: 3px solid black; background: white; cursor: crosshair; }
+    button { margin-top: 10px; padding: 8px 15px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Draw Your Comic Panel</h1>
+  <canvas id="comicCanvas" width="500" height="300"></canvas>
+
+  <button id="downloadBtn">Download as PNG</button>
+
+  <script>
+    const canvas = document.getElementById('comicCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', () => drawing = true);
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseout', () => drawing = false);
+
+    canvas.addEventListener('mousemove', draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = 'black';
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'comic-panel.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blue Background Page</title>
+    <style>
+        /* This sets the background color of the entire page */
+        body {
+            background-color: blue;
+            color: white; /* Optional: makes text readable on blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>The background of this page is blue.</p>
+</body>
+</html>
+p.b { zoom: 150%; } /* zoom in */
+p.c { zoom: 0.6; }  /* zoom out */
+``` [^3^]
+
+## 3. Full-Page Zoom with JavaScript
+To mimic browser zoom for the whole page:
+```html
+<button onclick="zoomIn()">Zoom In</button>
+<button onclick="zoomOut()">Zoom Out</button>
+
+<script>
+let zoom = 1; // 100%
+function zoomIn() { zoom += 0.1; document.body.style.zoom = zoom; }
+function zoomOut() { zoom -= 0.1; document.body.style.zoom = zoom; }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<a href="file:///C:/Users/bober/OneDrive/Desktop/Comic%20Art/Comic%20edit.html">Home> 
+<body style="background-color: lightblue;">
+<title>ComicArt.com</title>
+<!DOCTYPE html>
+<html>
+<head>
